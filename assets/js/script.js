@@ -85,6 +85,9 @@ var getRecs = function (artistName, resultNumber) {
     });
 
 };
+
+//use this function for a local storage call / carousel click
+//this is set up to build a single result
 var getSingleArtist = function(artistName){
     var lastFmRecAPI = "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + artistName + "&api_key=" + fmKey + "&format=json";
     fetch(lastFmRecAPI).then(function (response) {
@@ -132,6 +135,7 @@ var buildRecs = function (artistNameRec, artistBio, artistName, videoId, artistB
     $("#long-bio").html(artistBioLong);
 
 };
+
 
 var buildArtist = function(artistBio, artistName, videoId, artistBioLong){
     $("#devRecs").css("display", "none");
