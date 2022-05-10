@@ -4,7 +4,12 @@ var limit = 20;
 var artistName;
 var youtubeKey = ["AIzaSyAruDAmqTVC79gNs-7-sHyVx1zyaRzYPis", "AIzaSyCv3abDl7RNfGiICt80KVPOx22JWsDSBro", "AIzaSyBko84VIeCaWrdK8EspDLkDCkuFYDZsQAU", "AIzaSyDCUTgXNuEadfA_AUekjgy8ERv1WY5AT4o", "AIzaSyCbmbvdEaEQ0-On5-s4Ewb6B33BzsGt6oU"]
 
-
+$(".card").click(function(){
+    artistName = $(this).find(".item-title").text().trim();
+    
+    console.log(artistName);
+    getSingleArtist(artistName);
+})
 
 $("#search").submit(function (event) {
     event.preventDefault();
@@ -58,6 +63,7 @@ var getRecs = function (artistName, resultNumber) {
                                     if (response.ok) {
                                         response.json().then(function (data) {
                                             videoId = data.items[0].id.videoId;
+                                            console.log(videoId);
                                             buildRecs(artistNameRec, artistBio, artistName, videoId, artistBioLong);
 
                                         });
@@ -79,6 +85,40 @@ var getRecs = function (artistName, resultNumber) {
     });
 
 };
+var getSingleArtist = function(artistName){
+    var lastFmRecAPI = "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + artistName + "&api_key=" + fmKey + "&format=json";
+    fetch(lastFmRecAPI).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (data) {
+
+                var artistBioLong = data.artist.bio.content;
+                var artistBioArray = artistBioLong.split(".");
+                var artistBio = artistBioArray[0] + "." + artistBioArray[1] + "." + artistBioArray[2] + "." + artistBioArray[3] + ".";
+
+                var i = 0;
+                var keyChecker = function () {
+                    var youtubeAPI = "https://www.googleapis.com/youtube/v3/search?part=snippet&key=" + youtubeKey[i] + "&type=video&maxResults=1&q=" + artistName + "music video";
+                    fetch(youtubeAPI).then(function (response) {
+                        if (response.ok) {
+                            response.json().then(function (data) {
+                                videoId = data.items[0].id.videoId;
+                                console.log(videoId);
+                                buildArtist(artistBio, artistName, videoId, artistBioLong);
+
+                            });
+                        } else {
+                            i++;
+                            keyChecker();
+                        };
+                    })
+
+                }
+
+                keyChecker();
+            });
+        };
+    });
+};
 
 var buildRecs = function (artistNameRec, artistBio, artistName, videoId, artistBioLong) {
     $("#devRecs").css("display", "none");
@@ -94,6 +134,18 @@ var buildRecs = function (artistNameRec, artistBio, artistName, videoId, artistB
 
 };
 
+var buildArtist = function(artistBio, artistName, videoId, artistBioLong){
+    $("#devRecs").css("display", "none");
+    $("#recs").css("display", "block");
+    $("#intro-recs").css("display", "none");
+    $("#videoPlayer").attr("src", "https://www.youtube.com/embed/" + videoId);
+    $("#recName").html(artistName);
+    $("#recBio").html(artistBio);
+
+    $("#modal-artist").html(artistName);
+    $("#long-bio").html(artistBioLong);
+    $("#more-recs").css("display","none");
+};
 
 //expand modal
 $("#learn-more").click(function () {
