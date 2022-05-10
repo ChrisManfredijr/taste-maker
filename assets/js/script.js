@@ -7,7 +7,7 @@ var youtubeKey = ["AIzaSyAruDAmqTVC79gNs-7-sHyVx1zyaRzYPis", "AIzaSyCv3abDl7RNfG
 $(".card").click(function(){
     artistName = $(this).find(".item-title").text().trim();
     
-    console.log(artistName);
+    
     getSingleArtist(artistName);
 })
 
@@ -63,7 +63,7 @@ var getRecs = function (artistName, resultNumber) {
                                     if (response.ok) {
                                         response.json().then(function (data) {
                                             videoId = data.items[0].id.videoId;
-                                            console.log(videoId);
+                                            
                                             buildRecs(artistNameRec, artistBio, artistName, videoId, artistBioLong);
 
                                         });
@@ -102,7 +102,6 @@ var getSingleArtist = function(artistName){
                         if (response.ok) {
                             response.json().then(function (data) {
                                 videoId = data.items[0].id.videoId;
-                                console.log(videoId);
                                 buildArtist(artistBio, artistName, videoId, artistBioLong);
 
                             });
