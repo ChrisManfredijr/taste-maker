@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    <script src="https://kit.fontawesome.com/6b36750820.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css" />
     
 
@@ -19,8 +23,8 @@
     <section class="block mb-10">
         <header class="hero is-info">
             <div class="hero-body has-text-centered">
-                <h1 class="title is-1">Tastemakr</h1>
-                <h2 class="subtitle is-4 is-italic">Your personalized music recomendations</h2>
+                <h1 class="title is-1 "style= "font-family: 'Oleo Script Swash Caps', cursive;">tastemakr <i class="fa-solid fa-headphones"></i></h1>
+                <h2 class="subtitle is-4 is-italic is-family-primary">New music choices made easy</h2>
             </div>
         </header>
     </section>
@@ -31,10 +35,10 @@
             <div class="column is-three-fifths is-centered">
                 <form class="field has-addons has-addons-centered" id="search">
                     <p class="control is-expanded">
-                        <input type="text" class="input has-background-light" id="input" placeholder="Enter an artist...">
+                        <input type="text" class="input has-background-light is-italic is-family-primary" id="input" placeholder="Enter an artist...">
                     </p>
                     <p class="control">
-                        <a class="button is-info" id="searchArtist">Search</a>
+                        <a class="button is-info" id="searchArtist"><i class="fa-solid fa-magnifying-glass"></i></a>
                     </p>
                 </form>
             </div>
@@ -44,7 +48,7 @@
 
     <!--Recomendations Code block-->
     <section class="block" id="recs" style="display:none; margin-top:25px;">
-        <div class="title is-3 has-text-centered" id = "intro-recs" style = "margin-top:25px"> if you like " + artistName + " then you may enjoy....</div>
+        <div class="title is-3 has-text-centered is-family-primary" id = "intro-recs" style = "margin-top:25px"> if you like " + artistName + " then you may enjoy....</div>
         <div class="columns is-centered mb-10">
             <div class="column is-two-fifths" style="margin-right:10px">
                 <figure class="image is-16by9">
@@ -53,10 +57,10 @@
                 </figure>
             </div>
             <div class="column is-two-fifths" style="margin-left:10px">
-                <h1 class="title is-3" id="recName">" " + artistNameRec + " "</h1>
-                <p class="content is-medium" id="recBio">"" +  artistBio + ""</p>
-                <button class="js-modal-trigger button is-info" data-target="modal-more-info" id="learn-more">learn more</button>
-                <button class = "button is-info" id ="more-recs">Get another recomendation</button>
+                <h1 class="title is-3 is-family-primary" id="recName">" " + artistNameRec + " "</h1>
+                <p class="content is-medium is-family-primary" id="recBio">"" +  artistBio + ""</p>
+                <button class="js-modal-trigger button is-info" data-target="modal-more-info" id="learn-more"><i class="fa-solid fa-circle-info"></i>  Learn More</button>
+                <button class = "button is-info" id ="more-recs"><i class="fa-solid fa-music"></i>  New Recomendation</button>
             </div>
         </div>
     </section>
@@ -64,7 +68,7 @@
     <!--Learn More Modal-->
     <div id="modal-more-info" class="modal">
         <div class="modal-background"></div>
-        <div class="modal-card">
+        <div class="modal-card is-family-primary">
           <header class="modal-card-head ">
             <p class="modal-card-title" id="modal-artist">Modal title</p>
             <button class="delete" aria-label="close"></button>
