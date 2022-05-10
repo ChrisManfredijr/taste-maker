@@ -6,10 +6,10 @@ var youtubeKey = ["AIzaSyAruDAmqTVC79gNs-7-sHyVx1zyaRzYPis", "AIzaSyCv3abDl7RNfG
 
 $(".card").click(function(){
     artistName = $(this).find(".item-title").text().trim();
-    
-    
     getSingleArtist(artistName);
 })
+
+
 
 $("#search").submit(function (event) {
     event.preventDefault();
@@ -130,7 +130,7 @@ var buildRecs = function (artistNameRec, artistBio, artistName, videoId, artistB
     $("#videoPlayer").attr("src", "https://www.youtube.com/embed/" + videoId);
     $("#recName").html(artistNameRec);
     $("#recBio").html(artistBio);
-
+    $("#more-recs").css("display","inline");
     $("#modal-artist").html(artistNameRec);
     $("#long-bio").html(artistBioLong);
 
