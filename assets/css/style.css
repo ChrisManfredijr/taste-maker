@@ -5,3 +5,10 @@
 .card:hover{
     transform:scale(1.05);
 }
+
+.hero {
+    box-shadow:10px 5px 5px rgba(0, 0, 0, .55);
+  }
+  #recs{
+    box-shadow: 10px 5px 5px rgba(0, 0, 0, .55);
+  }

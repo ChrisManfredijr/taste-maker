@@ -306,8 +306,8 @@
       </section>
 
     <!--Recomendations Code block-->
-    <section class="block" id="recs" style="display:none; margin-top:25px;">
-        <div class="title is-3 has-text-centered is-family-primary" id = "intro-recs" style = "margin-top:25px"> if you like " + artistName + " then you may enjoy....</div>
+    <section class="block has-background-info" id="recs" style="display:none; margin-top:25px;">
+        <div class="title is-3 has-text-centered is-family-primary has-text-white" id = "intro-recs" style = "margin-top:25px"> if you like " + artistName + " then you may enjoy....</div>
         <div class="columns is-centered mb-10">
             <div class="column is-two-fifths" style="margin-right:10px">
                 <figure class="image is-16by9">
@@ -316,10 +316,10 @@
                 </figure>
             </div>
             <div class="column is-two-fifths" style="margin-left:10px">
-                <h1 class="title is-3 is-family-primary" id="recName">" " + artistNameRec + " "</h1>
-                <p class="content is-medium is-family-primary" id="recBio">"" +  artistBio + ""</p>
-                <button class="js-modal-trigger button is-info" data-target="modal-more-info" id="learn-more"><i class="fa-solid fa-circle-info"></i>  Learn More</button>
-                <button class = "button is-info" id ="more-recs"><i class="fa-solid fa-music"></i>  New Recomendation</button>
+                <h1 class="title is-3 is-family-primary has-text-white" id="recName">" " + artistNameRec + " "</h1>
+                <p class="content is-medium is-family-primary has-text-white" id="recBio">"" +  artistBio + ""</p>
+                <button class="js-modal-trigger button has-background-link-dark has-text-white" data-target="modal-more-info" id="learn-more"><i class="fa-solid fa-circle-info"></i>   Learn More</button>
+                <button class = "button has-background-link-dark has-text-white" id ="more-recs"><i class="fa-solid fa-music"></i>  New Recomendation</button>
             </div>
         </div>
     </section>
@@ -327,9 +327,9 @@
     <!--Learn More Modal-->
     <div id="modal-more-info" class="modal">
         <div class="modal-background"></div>
-        <div class="modal-card is-family-primary">
-          <header class="modal-card-head ">
-            <p class="modal-card-title" id="modal-artist">Modal title</p>
+        <div class="modal-card is-family-primary ">
+          <header class="modal-card-head has-background-link-dark">
+            <p class="modal-card-title has-text-white" id="modal-artist">Modal title</p>
             <button class="delete" aria-label="close"></button>
           </header>
           <section class="modal-card-body">
