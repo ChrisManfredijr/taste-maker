@@ -9,7 +9,9 @@ $(".card").click(function(){
     getSingleArtist(artistName);
 })
 
-
+$("#home").click(function() {
+    window.location.reload();
+}); 
 
 $("#search").submit(function (event) {
     event.preventDefault();

@@ -5,3 +5,12 @@
 .card:hover{
     transform:scale(1.05);
 }
+
+@keyframes spin {
+    from {transform:rotate(0deg); }
+    to {transform:rotate(360deg); }
+}
+
+.main-title:hover .spinning{
+    animation:spin 2s;
+}
