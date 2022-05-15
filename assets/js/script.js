@@ -162,6 +162,58 @@ $(".delete").click(function () {
     $("#modal-more-info").removeClass("is-active")
 });
 
+var saveFavorites = [];
+//listens for a click on the search button, then uses the city inputted to output
+// that cities weather info for the day and 5 day forecast
+$('.save-new-favorites').on("click", function (event) {
+	event.preventDefault();
+	artistName = $(this).parent('#save-new-favorites').siblings('.textVal').val().trim();
+	if (artistName === "") {
+		return;
+	};
+	saveFavorites.push(artistName);
+
+	localStorage.setItem('artistName', JSON.stringify(saveFavorites));
+	
+});
+
+var fillFavoritesE1 = $('.saveFavorites');
+//collects previously saved cities and turns them into buttons that can be used to re search that cities weather info 
+function retrieveFavorites() {
+	fillFavoritesEl.empty();
+
+	for (let i = 0; i < fillFavoritesEl.length; i++) {
+
+		var rowEl = $('<row>');
+		var btnEl = $('<button>').text(`${saveFavorites[i]}`)
+
+		rowEl.addClass('row previousArtists');
+		btnEl.addClass('btn btn-outline-secondary previousArtistBtn');
+		btnEl.attr('type', 'button');
+
+		fillFavoritesEl.prepend(rowEl);
+		rowEl.append(btnEl);
+	} if (!artistName) {
+		return;
+	}
+	
+	$('.previousArtistBtn').on("click", function (event) {
+		
+		artistName = $(this).text();
+		getSingleArtist(artistName);
+		
+	});
+};
+//expand modal
+$("#saved-favorites").click(function () {
+    $("#modal-favorites").addClass("is-active");
+});
+
+//close modal
+$(".delete").click(function () {
+    $("#modal-favorites").removeClass("is-active")
+});
+
 $("#more-recs").click(function () {
     if (resultNumber === limit) {
         resultNumber = 0;

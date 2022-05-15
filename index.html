@@ -42,6 +42,8 @@
                     <p class="control">
                         <a class="button is-info" id="searchArtist"><i class="fa-solid fa-magnifying-glass"></i></a>
                     </p>
+                    <button class="js-modal-trigger button is-info" id="save-new-favorites"><i class="fa-solid fa-heart"></i>  Save Favorites</button>
+                    <button class="js-modal-trigger button is-info" data-target="modal-favorites" id="saved-favorites"><i class="fa-solid fa-heart"></i>   Favorites</button>
                 </form>
             </div>
         </section>
@@ -335,6 +337,20 @@
           <section class="modal-card-body">
             <image src="" alt=""></image>
             <p id="long-bio"></p>
+          </section>
+        </div>
+      </div>
+       <!--Learn More Modal-->
+    <div id="modal-favorites" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card is-family-primary ">
+          <header class="modal-card-head has-background-link-dark">
+            <p class="modal-card-title has-text-white">Saved Favorites</p>
+            <button class="delete" aria-label="close"></button>
+          </header>
+          <section class="modal-card-body">
+            <image src="" alt=""></image>
+            <p id="fillFavoritesE1"></p>
           </section>
         </div>
       </div>
