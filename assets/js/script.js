@@ -127,6 +127,7 @@ var getSingleArtist = function(artistName){
 var buildRecs = function (artistNameRec, artistBio, artistName, videoId, artistBioLong) {
     $("#devRecs").css("display", "none");
     $("#recs").css("display", "block");
+    $("#intro-recs").css("display", "block");
     var originalArtist = artistName.italics();
     $("#intro-recs").html("If you like " + originalArtist + " then you may enjoy....");
     $("#videoPlayer").attr("src", "https://www.youtube.com/embed/" + videoId);
@@ -160,6 +161,59 @@ $("#learn-more").click(function () {
 //close modal
 $(".delete").click(function () {
     $("#modal-more-info").removeClass("is-active")
+});
+
+var saveFavorites = [];
+//listens for a click on the search button, then uses the city inputted to output
+// that cities weather info for the day and 5 day forecast
+$('#save-new-favorites').on("click", function (event) {
+	event.preventDefault();
+    
+    var artistFav = $("#recName").html();
+	var tempStorage = JSON.parse(localStorage.getItem('favorites'));
+        tempStorage.push(artistFav);
+        localStorage.setItem("favorites", JSON.stringify(tempStorage));
+ 
+});
+
+
+var localStorageMaker = function(){
+    if(localStorage.getItem("favorites") === null || localStorage.getItem('favorties') === "[]"){
+        localStorage.setItem("favorites", "[]");
+}
+};
+localStorageMaker();
+
+function retrieveFavorites() {
+	var tempStorage = JSON.parse(localStorage.getItem('favorites'));
+    $("#fillFavorites").empty();
+    for(var i = 0; i < tempStorage.length; i++){
+        $("#noFavorites").css("display", "none");
+        var artistButton = $((document.createElement('input')));
+            artistButton.attr("type", "submit");
+            artistButton.attr("value", tempStorage[i]); 
+            artistButton.addClass("button is-info is-fullwidth");
+            artistButton.css("margin-bottom","5px")
+            $("#fillFavorites").append(artistButton);
+        
+      
+    }
+	
+};
+
+$("#fillFavorites").on("click",".button", function() {
+    var favGet = $(this).attr("value");
+    getSingleArtist(favGet);
+});
+//expand modal
+$("#saved-favorites").click(function () {
+    $("#modal-favorites").addClass("is-active");
+    retrieveFavorites();
+});
+
+//close modal
+$(".delete").click(function () {
+    $("#modal-favorites").removeClass("is-active")
 });
 
 $("#more-recs").click(function () {
