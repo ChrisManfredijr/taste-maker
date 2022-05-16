@@ -6,7 +6,7 @@
 https://chrismanfredijr.github.io/taste-maker/
 
 ## Purpose
-    to build a website that allows users to input the name of an artist and get a recommendation based on their input. Users can also click to see more results that would match their preferences. Each recommendation is accompanied by a youtube player of their music and a short bio about them. Users can expand the bio to learn more 
+    to build a website that allows users to input the name of an artist and get a recommendation based on their input. Users can also click to see more results that would match their preferences. Each recommendation is accompanied by a youtube player of their music and a short bio about them. Users can expand the bio to learn more. They will also see curated recommendations from the creators. Finally users can favorite artists to come back and visit them later.
 
 ## Built with 
 #### Languages:
