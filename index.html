@@ -42,10 +42,12 @@
                     <p class="control">
                         <a class="button is-info" id="searchArtist"><i class="fa-solid fa-magnifying-glass"></i></a>
                     </p>
-                    <button class="js-modal-trigger button is-info" id="save-new-favorites"><i class="fa-solid fa-heart"></i>  Save Favorites</button>
-                    <button class="js-modal-trigger button is-info" data-target="modal-favorites" id="saved-favorites"><i class="fa-solid fa-heart"></i>   Favorites</button>
-                </form>
+                    <button class="js-modal-trigger button is-light " data-target="modal-favorites" id="saved-favorites">My Favorites <i class="fa-solid fa-heart" ></i></button>
+                  </form>
             </div>
+            
+              
+            
         </section>
     </section>
     
@@ -322,6 +324,7 @@
                 <p class="content is-medium is-family-primary has-text-white" id="recBio">"" +  artistBio + ""</p>
                 <button class="js-modal-trigger button has-background-link-dark has-text-white" data-target="modal-more-info" id="learn-more"><i class="fa-solid fa-circle-info"></i>   Learn More</button>
                 <button class = "button has-background-link-dark has-text-white" id ="more-recs"><i class="fa-solid fa-music"></i>  New Recomendation</button>
+                <button class="js-modal-trigger button is-info" id="save-new-favorites"><i class="fa-solid fa-heart"></i></button>
             </div>
         </div>
     </section>
@@ -335,12 +338,11 @@
             <button class="delete" aria-label="close"></button>
           </header>
           <section class="modal-card-body">
-            <image src="" alt=""></image>
             <p id="long-bio"></p>
           </section>
         </div>
       </div>
-       <!--Learn More Modal-->
+       <!--favorites modal-->
     <div id="modal-favorites" class="modal">
         <div class="modal-background"></div>
         <div class="modal-card is-family-primary ">
@@ -349,8 +351,8 @@
             <button class="delete" aria-label="close"></button>
           </header>
           <section class="modal-card-body">
-            <image src="" alt=""></image>
-            <p id="fillFavoritesE1"></p>
+            <p id="noFavorites">Favorite an artist to get started!</p>
+            <p id="fillFavorites"></p>
           </section>
         </div>
       </div>

@@ -127,6 +127,7 @@ var getSingleArtist = function(artistName){
 var buildRecs = function (artistNameRec, artistBio, artistName, videoId, artistBioLong) {
     $("#devRecs").css("display", "none");
     $("#recs").css("display", "block");
+    $("#intro-recs").css("display", "block");
     var originalArtist = artistName.italics();
     $("#intro-recs").html("If you like " + originalArtist + " then you may enjoy....");
     $("#videoPlayer").attr("src", "https://www.youtube.com/embed/" + videoId);
@@ -165,48 +166,49 @@ $(".delete").click(function () {
 var saveFavorites = [];
 //listens for a click on the search button, then uses the city inputted to output
 // that cities weather info for the day and 5 day forecast
-$('.save-new-favorites').on("click", function (event) {
+$('#save-new-favorites').on("click", function (event) {
 	event.preventDefault();
-	artistName = $(this).parent('#save-new-favorites').siblings('.textVal').val().trim();
-	if (artistName === "") {
-		return;
-	};
-	saveFavorites.push(artistName);
-
-	localStorage.setItem('artistName', JSON.stringify(saveFavorites));
-	
+    
+    var artistFav = $("#recName").html();
+	var tempStorage = JSON.parse(localStorage.getItem('favorites'));
+        tempStorage.push(artistFav);
+        localStorage.setItem("favorites", JSON.stringify(tempStorage));
+ 
 });
 
-var fillFavoritesE1 = $('.saveFavorites');
-//collects previously saved cities and turns them into buttons that can be used to re search that cities weather info 
-function retrieveFavorites() {
-	fillFavoritesEl.empty();
 
-	for (let i = 0; i < fillFavoritesEl.length; i++) {
-
-		var rowEl = $('<row>');
-		var btnEl = $('<button>').text(`${saveFavorites[i]}`)
-
-		rowEl.addClass('row previousArtists');
-		btnEl.addClass('btn btn-outline-secondary previousArtistBtn');
-		btnEl.attr('type', 'button');
-
-		fillFavoritesEl.prepend(rowEl);
-		rowEl.append(btnEl);
-	} if (!artistName) {
-		return;
-	}
-	
-	$('.previousArtistBtn').on("click", function (event) {
-		
-		artistName = $(this).text();
-		getSingleArtist(artistName);
-		
-	});
+var localStorageMaker = function(){
+    if(localStorage.getItem("favorites") === null || localStorage.getItem('favorties') === "[]"){
+        localStorage.setItem("favorites", "[]");
+}
 };
+localStorageMaker();
+
+function retrieveFavorites() {
+	var tempStorage = JSON.parse(localStorage.getItem('favorites'));
+    $("#fillFavorites").empty();
+    for(var i = 0; i < tempStorage.length; i++){
+        $("#noFavorites").css("display", "none");
+        var artistButton = $((document.createElement('input')));
+            artistButton.attr("type", "submit");
+            artistButton.attr("value", tempStorage[i]); 
+            artistButton.addClass("button is-info is-fullwidth");
+            artistButton.css("margin-bottom","5px")
+            $("#fillFavorites").append(artistButton);
+        
+      
+    }
+	
+};
+
+$("#fillFavorites").on("click",".button", function() {
+    var favGet = $(this).attr("value");
+    getSingleArtist(favGet);
+});
 //expand modal
 $("#saved-favorites").click(function () {
     $("#modal-favorites").addClass("is-active");
+    retrieveFavorites();
 });
 
 //close modal
